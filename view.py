@@ -9,7 +9,7 @@ class LibraryView:
         return book_id, book_title, book_author
  
     def main_menu(self):
-        print('choose 1-7')
+        print('choose 1-3')
         print('Add books = 1')
         print('Display books = 2')
         print('exit = 3')
