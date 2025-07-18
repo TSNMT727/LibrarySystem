@@ -1,9 +1,9 @@
 import os
 import textwrap
 
+books_file = 'data/books.txt'
 class BooksModel:
-    def __init__(self, books_file): #TODO: don't define filename directly in code, place variable on top.
-        books_file = 'data/books.txt'
+    def __init__(self, books_file = books_file):
         self.filename = books_file
         self.file_exist()
         

@@ -1,7 +1,6 @@
-from books.controller import LibraryController
+import books_new.controller
 
 def main():
-    controller = LibraryController()
-    controller.main_menu_run()
+    books_new.controller.main_menu_run()
 
 main()
