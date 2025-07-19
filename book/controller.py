@@ -1,4 +1,4 @@
-from books_new.view import (
+from book.view import (
     add_book as view_add_book,
     main_menu,
     user_input_main,
@@ -12,7 +12,7 @@ from books_new.view import (
     end_programm,
     display_member_bar
 )
-from books_new.model import BooksModel
+from book.model import BooksModel
 
 
 def add_book_controller(book_model):
