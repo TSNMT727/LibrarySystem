@@ -39,7 +39,7 @@ def handle_sign_up():
             break
 
 def handle_list_members():
-    members = m.read_members_from_file()
+    members = m.load_members()
     if len(members) == 0:
         print("No members found")
     else:
@@ -53,3 +53,5 @@ def handle_list_members():
         headers = [key.upper() for key in members[0].keys()]
         print(tabulate(rows, headers, tablefmt="rounded_grid"))
     
+def handle_get_member(_member_id: str):
+    return m.get_member(_member_id)

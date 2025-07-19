@@ -9,13 +9,13 @@ h.print_greeting()
 h.print_instructions()
 
 commands_list = {
-   # "1": books_controller.add_book_controller,
+    "1": books_controller.add_book_controller,
     "2": members_controller.handle_sign_up,
-   # "3": lending_service.handle_lending,
-   # "4": lending_service.handle_returning,
-   # "5": #books_controller.book,
+    "3": lending_service.handle_lending,
+    "4": lending_service.handle_returning,
+    "5": books_controller.display_member_list_controller,
     "6": members_controller.handle_list_members,
-   # "7": lending_controller.handle_list_lending,
+    "7": lending_controller.handle_list_lending,
 }
 
 running = True

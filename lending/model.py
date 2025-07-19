@@ -1,6 +1,6 @@
 import datetime
 
-LENDING_FILE = "storage/lending.txt"
+LENDING_FILE = "LibrarySystem/data/lending.txt"
 
 def load_lending():
     try:
