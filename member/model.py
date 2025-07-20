@@ -1,5 +1,7 @@
 MEMBERS_FILE = "LibrarySystem/data/members.txt"
 
+f = open(MEMBERS_FILE, "a")
+
 def load_members():
     with open(MEMBERS_FILE, "r") as file:
         lines = file.readlines()

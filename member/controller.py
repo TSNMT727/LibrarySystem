@@ -31,11 +31,9 @@ def handle_sign_up():
         choice = input("Enter your choice (1 or 2): ")
 
         if choice == '2':
-            # TODO: go to main_menu
             break
         elif choice != '1':
             print("Invalid option. Returning to main menu by default.")
-            # TODO: go to main_menu
             break
 
 def handle_list_members():

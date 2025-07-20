@@ -4,8 +4,7 @@ import textwrap
 BOOKS_FILE = 'LibrarySystem/data/books.txt'
 
 def file_exist():
-    if not os.path.exists(BOOKS_FILE):
-        open(BOOKS_FILE, 'w').close()
+    f = open(BOOKS_FILE, "a")
 
 def all_books():
     books = []
