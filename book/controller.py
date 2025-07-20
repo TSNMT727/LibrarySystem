@@ -34,6 +34,44 @@ def add_book_controller():
         print("Book added sucessfully")
         break
 
+def handle_get_book(book_id):
+    book = model.get_book(book_id)
+    if book:
+        # Add 'id' and 'available' fields for lending_service compatibility
+        book_with_status = book.copy()
+        book_with_status['id'] = book['bookid']
+        book_with_status['available'] = (book['bookstatus'] == 'available')
+        return book_with_status
+    else:
+        return None
+
+# Helper to update book status in file
+def _update_book_status(book_id, new_status):
+    books = model.all_books()
+    updated = False
+    for book in books:
+        if book['bookid'] == book_id:
+            book['bookstatus'] = new_status
+            updated = True
+    if updated:
+        # Write all books back to file
+        with open(model.BOOKS_FILE, 'w') as f:
+            for book in books:
+                f.write(f"{book['bookid']},{book['booktitle']},{book['bookauthor']},{book['bookstatus']}\n")
+    return updated
+
+def handle_mark_book_unavailable(book_id):
+    if _update_book_status(book_id, 'unavailable'):
+        print(f"Book {book_id} marked as unavailable.")
+    else:
+        print("Book not found.")
+
+def handle_mark_book_available(book_id):
+    if _update_book_status(book_id, 'available'):
+        print(f"Book {book_id} marked as available.")
+    else:
+        print("Book not found.")
+
 def display_member_list_controller():
     display_member_bar()
     model.book_list()
