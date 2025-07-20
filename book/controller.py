@@ -1,4 +1,4 @@
-from books_new.view import (
+from book.view import (
     add_book as view_add_book,
     main_menu,
     user_input_main,
@@ -12,10 +12,11 @@ from books_new.view import (
     end_programm,
     display_member_bar
 )
-from books_new.model import BooksModel
+import book.model as model
+# from book.model import BooksModel
 
 
-def add_book_controller(book_model):
+def add_book_controller():
     max_attempts = 3
     counter = 0
     while True:
@@ -23,7 +24,7 @@ def add_book_controller(book_model):
         if not book_id:
             user_input_empty()
             continue
-        if book_model.book_exists(book_id):
+        if model.book_exists(book_id):
             counter += 1
             if counter >= max_attempts:
                 b_attempts_maxed()
@@ -37,14 +38,15 @@ def add_book_controller(book_model):
             else:
                 user_input_repeat(max_attempts - counter)
                 continue
-        book_model.add_book(book_id, book_title, book_author)
+        model.add_book(book_id, book_title, book_author)
         book_added_successfully()
         break
 
-def display_member_list_controller(book_model):
+def display_member_list_controller():
     display_member_bar()
-    book_model.book_list()
+    model.book_list()
 
+'''
 def main_menu_run():
     book_model = BooksModel()
     while True:
@@ -62,3 +64,4 @@ def main_menu_run():
             break
         else:
             user_input_invalid()
+'''

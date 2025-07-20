@@ -1,6 +1,7 @@
-import controller
+from tabulate import tabulate
+import member.model as m
 
-def sign_up():
+def handle_sign_up():
     while True:
         
         try:
@@ -9,8 +10,8 @@ def sign_up():
         except ValueError:
             print("Invalid input. Please enter a number.")
             continue
-
-        if controller.compare_new_member(new_user_id):
+        
+        if m.compare_new_member(new_user_id):
             print("User is already a registered user!")
         else:
             print("Enter member's name: ")
@@ -20,7 +21,7 @@ def sign_up():
             contact = input()
 
             new_member_info = f"{new_user_id},{name},{contact},1\n"
-            if controller.save_member_to_file(new_member_info):
+            if m.save_member_to_file(new_member_info):
                 print(f"{new_user_id} has been registered!")
 
         # Ask user what to do next
@@ -30,14 +31,25 @@ def sign_up():
         choice = input("Enter your choice (1 or 2): ")
 
         if choice == '2':
-            # TODO: go to main_menu
             break
         elif choice != '1':
             print("Invalid option. Returning to main menu by default.")
-            # TODO: go to main_menu
             break
 
-def display_members():
-    members_JSON = controller.read_members_from_file()
-    print(members_JSON)
-    # TODO: Something-something make this prettier something-something ahh idk...
+def handle_list_members():
+    members = m.load_members()
+    if len(members) == 0:
+        print("No members found")
+    else:
+        rows = []
+        for member in members:
+            row = []
+            for key in member.keys():
+                row.append(member[key])
+            rows.append(row)
+
+        headers = [key.upper() for key in members[0].keys()]
+        print(tabulate(rows, headers, tablefmt="rounded_grid"))
+    
+def handle_get_member(_member_id: str):
+    return m.get_member(_member_id)
