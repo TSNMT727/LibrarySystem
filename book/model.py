@@ -44,5 +44,13 @@ def book_list():
                 else:
                     print(f'{"":<10}{titles[i]:<30}{authors[i]:<20}{"":<10}')
 
+def get_book(book_id):
+    books = all_books()
+    for book in books:
+        if book['bookid'] == book_id:
+            return book
+    return None
+
+
 # Initialize file
 file_exist()
