@@ -1,7 +1,3 @@
-# from ..book import controller as book_controller
-# from ..member import controller as member_controller
-# from ..lending import controller as lending_controller
-
 import book.controller as book_controller
 import member.controller as member_controller
 import lending.controller as lending_controller

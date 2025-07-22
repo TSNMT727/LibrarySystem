@@ -1,7 +1,7 @@
 import os
 import textwrap
 
-BOOKS_FILE = 'LibrarySystem/data/books.txt'
+BOOKS_FILE = 'data/books.txt'
 
 def file_exist():
     f = open(BOOKS_FILE, "a")

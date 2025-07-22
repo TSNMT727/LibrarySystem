@@ -5,8 +5,6 @@ from book.view import (
     display_member_bar
 )
 import book.model as model
-# from book.model import BooksModel
-
 
 def add_book_controller():
     max_attempts = 3
@@ -14,7 +12,7 @@ def add_book_controller():
     while True:
         book_id, book_title, book_author = view_add_book()
         if not book_id:
-            print("Please enter somehting bro.")
+            print("Please enter something bro.")
             continue
         if model.book_exists(book_id):
             counter += 1
@@ -31,7 +29,7 @@ def add_book_controller():
                 user_input_repeat(max_attempts - counter)
                 continue
         model.add_book(book_id, book_title, book_author)
-        print("Book added sucessfully")
+        print("Book added successfully.")
         break
 
 def handle_get_book(book_id):

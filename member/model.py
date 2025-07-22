@@ -1,4 +1,4 @@
-MEMBERS_FILE = "LibrarySystem/data/members.txt"
+MEMBERS_FILE = "data/members.txt"
 
 f = open(MEMBERS_FILE, "a")
 
@@ -22,10 +22,10 @@ def convert_to_json(data):
     members = []
     for line in lines:
         members.append({
-            "stu_ID": line[0],
-            "stu_Name": line[1],
-            "stu_Contact": line[2],
-            "stu_Status": line[3]
+            "id": line[0],
+            "name": line[1],
+            "contact": line[2],
+            "status": line[3]
         })
 
     return(members)
@@ -33,7 +33,7 @@ def convert_to_json(data):
 def compare_new_member(new_Member):
     members_List = load_members()
     for member in members_List:
-        member_stu_ID = int(member["stu_ID"])
+        member_stu_ID = int(member["id"])
         if new_Member == member_stu_ID:
             return (True, "Student has already been registered before!")
     
@@ -43,7 +43,7 @@ def compare_new_member(new_Member):
 def save_member_to_file(member):
     with open(MEMBERS_FILE, "a") as file:            
         try:
-            line = f"{member['stu_ID']},{member['stu_Name']},{member['stu_Contact']},{member['stu_Status']}\n"
+            line = f"{member['id']},{member['name']},{member['contact']},{member['status']}\n"
             file.write(line)
         except Exception as e:
             return e  # return actual exception

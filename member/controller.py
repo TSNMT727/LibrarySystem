@@ -51,5 +51,5 @@ def handle_list_members():
         headers = [key.upper() for key in members[0].keys()]
         print(tabulate(rows, headers, tablefmt="rounded_grid"))
     
-def handle_get_member(_member_id: str):
-    return m.get_member(_member_id)
+def handle_get_member(member_id: str):
+    return m.get_member(member_id)
