@@ -19,9 +19,8 @@ def handle_sign_up():
 
             print("Enter member's contact information (e.g., email address): ")
             contact = input()
-
-            new_member_info = f"{new_user_id},{name},{contact},1\n"
-            if m.save_member_to_file(new_member_info):
+            
+            if m.save_member_to_file(new_user_id, name, contact, "1"):
                 print(f"{new_user_id} has been registered!")
 
         # Ask user what to do next

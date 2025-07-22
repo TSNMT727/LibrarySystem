@@ -1,4 +1,1 @@
-B01,1,1,available
-B02,a,a,available
-bbb,s,s,available
-TEST1,TEST1,TEST1,available
+BOOK1,I'm a book,Dz,available

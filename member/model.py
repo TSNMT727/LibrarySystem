@@ -1,14 +1,12 @@
 MEMBERS_FILE = "data/members.txt"
 
-f = open(MEMBERS_FILE, "a")
-
 def load_members():
-    with open(MEMBERS_FILE, "r") as file:
-        lines = file.readlines()
-    
-    parsed_members_JSON = convert_to_json(lines)
-
-    return(parsed_members_JSON)
+    try:
+        with open(MEMBERS_FILE, "r") as file:
+            return(convert_to_json(file.readlines()))
+    except FileNotFoundError:
+        open(MEMBERS_FILE, "w").close()
+        return []
 
 def get_member(member_id):
     members = load_members()
@@ -40,13 +38,11 @@ def compare_new_member(new_Member):
     return (False)
         
 
-def save_member_to_file(member):
-    with open(MEMBERS_FILE, "a") as file:            
-        try:
-            line = f"{member['id']},{member['name']},{member['contact']},{member['status']}\n"
+def save_member_to_file(stu_id, stu_name, stu_contact, stu_status):
+    try:
+        with open(MEMBERS_FILE, "a") as file:
+            line = f"{stu_id},{stu_name},{stu_contact},{stu_status}\n"
             file.write(line)
-        except Exception as e:
-            return e  # return actual exception
+    except FileNotFoundError:
+        open(MEMBERS_FILE, "w").close()
     return True
-
-
