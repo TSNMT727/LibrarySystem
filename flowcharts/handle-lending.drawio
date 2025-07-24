@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="XB6LQ53kYp-2zV9CZ4SE" name="Page-1">
-        <mxGraphModel dx="1205" dy="1431" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2752" dy="2441" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -21,7 +21,20 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="31" value="If book exists" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="216" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="31" target="134" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-40" y="-690"/>
+                            <mxPoint x="-40" y="-820"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="217" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="216" vertex="1" connectable="0">
+                    <mxGeometry x="-0.8819" y="4" relative="1" as="geometry">
+                        <mxPoint x="5" y="2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="If book exists and marked available" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-157.49" y="-731" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="114" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="34" target="31" edge="1">
@@ -37,18 +50,18 @@
                 </mxCell>
                 <mxCell id="40" style="edgeStyle=none;html=1;" parent="1" source="38" target="64" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="-683.99" y="-241" as="targetPoint"/>
+                        <mxPoint x="-683.99" y="-229" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="38" value="Mark book as unavailable" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-658.87" y="-231" width="103.25" height="40" as="geometry"/>
+                    <mxGeometry x="-658.87" y="-219" width="103.25" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="113" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="44" target="34" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="127" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="113" vertex="1" connectable="0">
+                <mxCell id="127" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="113" vertex="1" connectable="0">
                     <mxGeometry x="-0.1873" y="-3" relative="1" as="geometry">
-                        <mxPoint as="offset"/>
+                        <mxPoint x="-1" y="-3" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="115" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="44" target="99" edge="1">
@@ -59,19 +72,21 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="126" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="115" vertex="1" connectable="0">
+                <mxCell id="126" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="115" vertex="1" connectable="0">
                     <mxGeometry x="-0.0723" y="-1" relative="1" as="geometry">
-                        <mxPoint as="offset"/>
+                        <mxPoint y="-1" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="44" value="book_counter &amp;lt; MAX_ATTEMPTS" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-470.49" y="-741" width="131.14" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="85" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="64" target="10" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="85" style="edgeStyle=none;html=1;" parent="1" source="64" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-607" y="-80" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="64" value="Create lending record" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-658.87" y="-171" width="103.25" height="40" as="geometry"/>
+                    <mxGeometry x="-658.87" y="-159" width="103.25" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="117" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="69" target="44" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -110,6 +125,11 @@
                 <mxCell id="143" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="75" target="44" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
+                <mxCell id="221" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="143" vertex="1" connectable="0">
+                    <mxGeometry x="-0.4781" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="75" value="lending and book == None" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-647.25" y="-751" width="80" height="80" as="geometry"/>
                 </mxCell>
@@ -123,9 +143,9 @@
                 </mxCell>
                 <mxCell id="176" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="77" target="10" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="-683.99" y="-41" as="targetPoint"/>
+                        <mxPoint x="-674" y="-47" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="-763.99" y="-311"/>
+                            <mxPoint x="-763.99" y="-299"/>
                             <mxPoint x="-764" y="-60"/>
                         </Array>
                     </mxGeometry>
@@ -136,7 +156,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="77" value="if lending == True" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-647.25" y="-352" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="-647.25" y="-340" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="81" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="78" target="75" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -164,11 +184,21 @@
                 <mxCell id="94" style="edgeStyle=none;html=1;" parent="1" source="82" target="77" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
+                <mxCell id="223" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="94" vertex="1" connectable="0">
+                    <mxGeometry x="-0.5463" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="82" value="lending and member == None" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-647.25" y="-451" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="83" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="75" target="82" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="220" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="83" vertex="1" connectable="0">
+                    <mxGeometry x="-0.5636" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="116" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="99" target="69" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -192,9 +222,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="135" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="122" target="134" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="122" value="Increment book_counter" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-177.49000000000007" y="-791" width="120" height="30" as="geometry"/>
                 </mxCell>
@@ -202,8 +229,8 @@
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-33.989999999999995" y="-555"/>
-                            <mxPoint x="-33.989999999999995" y="-861"/>
-                            <mxPoint x="-383.99" y="-861"/>
+                            <mxPoint x="-34" y="-840"/>
+                            <mxPoint x="-384" y="-840"/>
                             <mxPoint x="-383.99" y="-791"/>
                             <mxPoint x="-606.99" y="-791"/>
                         </Array>
@@ -232,6 +259,19 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="218" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="154" target="175" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-40" y="-360"/>
+                            <mxPoint x="-40" y="-490"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="219" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="218" vertex="1" connectable="0">
+                    <mxGeometry x="-0.8208" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="154" value="If member exists" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-157.75" y="-402" width="80" height="80" as="geometry"/>
                 </mxCell>
@@ -249,9 +289,9 @@
                 <mxCell id="157" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="162" target="156" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="158" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="157" vertex="1" connectable="0">
+                <mxCell id="158" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="157" vertex="1" connectable="0">
                     <mxGeometry x="-0.1873" y="-3" relative="1" as="geometry">
-                        <mxPoint as="offset"/>
+                        <mxPoint y="-3" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="159" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="162" target="168" edge="1">
@@ -262,7 +302,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="160" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="159" vertex="1" connectable="0">
+                <mxCell id="160" value="False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="159" vertex="1" connectable="0">
                     <mxGeometry x="-0.0723" y="-1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
@@ -271,9 +311,14 @@
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-500.5" y="-351" as="sourcePoint"/>
                         <Array as="points">
-                            <mxPoint x="-533.99" y="-411"/>
-                            <mxPoint x="-533.99" y="-381"/>
+                            <mxPoint x="-510" y="-411"/>
+                            <mxPoint x="-510" y="-382"/>
                         </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="222" value="True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="161" vertex="1" connectable="0">
+                    <mxGeometry x="-0.4542" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-2" y="-2" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="162" value="member_counter &amp;lt; MAX_ATTEMPTS" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -312,9 +357,6 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="170" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="171" target="175" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
                 <mxCell id="171" value="Increment member_counter" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-177.75000000000006" y="-462" width="120" height="30" as="geometry"/>
                 </mxCell>
@@ -323,8 +365,8 @@
                         <mxPoint x="-674" y="-512" as="targetPoint"/>
                         <Array as="points">
                             <mxPoint x="-34.25" y="-226"/>
-                            <mxPoint x="-34.25" y="-532"/>
-                            <mxPoint x="-384.25" y="-532"/>
+                            <mxPoint x="-30" y="-510"/>
+                            <mxPoint x="-384" y="-510"/>
                             <mxPoint x="-384.25" y="-492"/>
                             <mxPoint x="-607.25" y="-492"/>
                         </Array>
