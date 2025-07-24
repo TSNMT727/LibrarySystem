@@ -1,71 +1,74 @@
-from book.view import (
-    add_book as view_add_book,
-    user_continue,
-    user_input_repeat,
-    display_member_bar
-)
 import book.model as model
 
-def add_book_controller():
-    max_attempts = 3
-    counter = 0
-    while True:
-        book_id, book_title, book_author = view_add_book()
-        if not book_id:
-            print("Please enter something bro.")
-            continue
-        if model.book_exists(book_id):
-            counter += 1
-            if counter >= max_attempts:
-                print("You have reached max attempts.")
-                user_choice = user_continue()
-                if user_choice == 'yes':
-                    counter = 0
-                    continue
-                elif user_choice == 'no':
-                    print("Returning to main menu...")
-                    return
-            else:
-                user_input_repeat(max_attempts - counter)
-                continue
-        model.add_book(book_id, book_title, book_author)
-        print("Book added successfully.")
-        break
+import utils.helpers as h
+from utils.constants import MAX_ATTEMPTS
 
-def handle_get_book(book_id):
-    book = model.get_book(book_id)
-    if book:
-        # Add 'id' and 'available' fields for lending_service compatibility
-        book_with_status = book.copy()
-        book_with_status['id'] = book['bookid']
-        book_with_status['available'] = (book['bookstatus'] == 'available')
-        return book_with_status
-    else:
-        return None
+from tabulate import tabulate
 
-# Helper to update book status in file
-def _update_book_status(book_id, new_status):
+def handle_books_exist():
     books = model.all_books()
-    updated = False
-    for book in books:
-        if book['bookid'] == book_id:
-            book['bookstatus'] = new_status
-            updated = True
-    if updated:
-        # Write all books back to file
-        with open(model.BOOKS_FILE, 'w') as f:
-            for book in books:
-                f.write(f"{book['bookid']},{book['booktitle']},{book['bookauthor']},{book['bookstatus']}\n")
-    return updated
+    if not books:
+        return False
+    return True
 
-def handle_mark_book_unavailable(book_id):
-    print(f"Book {book_id} marked as unavailable.")
+def handle_add_book():
+    counter = 0
+    adding = True
 
+    while adding:
+        while counter < MAX_ATTEMPTS:
+            # Get user input for book id
+            book_id = input("\nEnter book ID: ")
+            
+            # If book ID already exists, increment counter and prompt again
+            if model.get_book(book_id):
+                print("Book ID already exists. Please enter a new ID.")
+                counter += 1
+                continue
 
-def handle_mark_book_available(book_id):
-    print(f"Book {book_id} marked as available.")
+            # If book ID is unique, get title and author and add the book
+            else:
+                title = input("Enter book title: ")
+                author = input("Enter book author: ")
 
+                model.add_book(book_id, title, author)
+                print("Book added successfully.")
+                adding = False
+                break
+        else:
+            if not h.handle_max_attempts():
+                break
+            counter = 0
 
-def display_member_list_controller():
-    display_member_bar()
-    model.book_list()
+        to_continue = h.handle_continue()
+        if to_continue:
+            counter = 0
+            adding = True
+
+def handle_get_book(_book_id: str):
+    return model.get_book(_book_id)
+
+def handle_mark_book_unavailable(_book_id: str):
+    model.update_book_availability(_book_id, False)
+    print("Book availability updated")
+
+def handle_mark_book_available(_book_id: str):
+    model.update_book_availability(_book_id, True)
+    print("Book availability updated")
+
+def handle_list_books():
+    books = model.all_books()
+    if len(books) == 0:
+        print("No books found")
+    else:
+        rows = []
+        for book in books:
+            row = []
+            for key in book.keys():
+                row.append(book[key])
+            rows.append(row)
+
+            # print(book)
+
+        headers = [key.upper() for key in books[0].keys()]
+        print("\n" + tabulate(rows, headers, tablefmt="rounded_grid"))

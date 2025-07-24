@@ -1,5 +1,9 @@
 from . import model as l
+
 from tabulate import tabulate
+
+def handle_get_lending():
+    return l.load_lending()
 
 def handle_add_lending(_book_id: str, _member_id: str):
     l.add_lending(_book_id, _member_id)
@@ -22,4 +26,4 @@ def handle_list_lending():
             rows.append(row)
 
         headers = [key.upper() for key in lending[0].keys()]
-        print(tabulate(rows, headers, tablefmt="rounded_grid"))
+        print("\n" + tabulate(rows, headers, tablefmt="rounded_grid"))
