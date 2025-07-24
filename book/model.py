@@ -1,56 +1,49 @@
-import os
-import textwrap
-
-BOOKS_FILE = 'data/books.txt'
-
-def file_exist():
-    f = open(BOOKS_FILE, "a")
+from utils.constants import BOOKS_FILE
 
 def all_books():
     books = []
-    with open(BOOKS_FILE, 'r') as f:
-        for line in f:
-            parts = line.strip().split(',')
-            if len(parts) >= 4:
-                books.append({
-                    'bookid': parts[0],
-                    'booktitle': parts[1],
-                    'bookauthor': parts[2],
-                    'bookstatus': parts[3]
-                })
+    try:
+        with open(BOOKS_FILE, 'r') as f:
+            for line in f:
+                parts = line.strip().split(',')
+                if len(parts) >= 4:
+                    books.append({
+                        'id': parts[0],
+                        'title': parts[1],
+                        'author': parts[2],
+                        'is_available': parts[3] == 'True'
+                    })
+    except FileNotFoundError:
+        open(BOOKS_FILE, 'w').close()
+
     return books
-
-def book_exists(book_id):
-    books = all_books()
-    return any(book['bookid'] == book_id for book in books)
-
-def add_book(book_id, booktitle, bookauthor):
-    with open(BOOKS_FILE, 'a') as f:
-        f.write(f'{book_id},{booktitle},{bookauthor},available\n')
-    return True
-
-def book_list():
-    with open(BOOKS_FILE, 'r') as f:
-        for line in f:
-            parts = line.strip().split(',')
-            titles = textwrap.wrap(parts[1], width=29)
-            authors = textwrap.wrap(parts[2], width=19)
-            max_lines = max(len(titles), len(authors))
-            titles += [''] * (max_lines - len(titles))
-            authors += [''] * (max_lines - len(authors))
-            for i in range(max_lines):
-                if i == 0:
-                    print(f'{parts[0]:<10}{titles[i]:<30}{authors[i]:<20}{parts[3]:<10}')
-                else:
-                    print(f'{"":<10}{titles[i]:<30}{authors[i]:<20}{"":<10}')
 
 def get_book(book_id):
     books = all_books()
     for book in books:
-        if book['bookid'] == book_id:
+        if book['id'] == book_id:
             return book
     return None
 
+def add_book(book_id, title, author):
+    with open(BOOKS_FILE, 'a') as f:
+        f.write(f'{book_id},{title},{author},{True}\n')
+    return True
 
-# Initialize file
-file_exist()
+
+def update_book_availability(_book_id: str, _availability: bool):
+    books = all_books()
+    updated = []
+    for book in books:
+        if book["id"] == _book_id:
+            updated.append(convert_to_book_str({**book, "is_available": _availability }))
+        else:
+            updated.append(convert_to_book_str(book))
+
+    with open(BOOKS_FILE, "w") as file:
+        for line in updated:
+            file.write(line)
+
+
+def convert_to_book_str(dict):
+    return f"{dict['id']},{dict['title']},{dict['author']},{dict['is_available']}\n"

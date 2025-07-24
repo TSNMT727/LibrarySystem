@@ -1,11 +1,10 @@
 import datetime
-
-LENDING_FILE = "data/lending.txt"
+from utils.constants import LENDING_FILE
 
 def load_lending():
     try:
         with open(LENDING_FILE, "r") as file:
-            return [convert_to_lending_json(line) for line in file]
+            return [convert_to_lending_dict(line) for line in file]
     except FileNotFoundError:
         open(LENDING_FILE, "w").close()
         return []
@@ -32,7 +31,7 @@ def update_lending_return(_book_id):
         for line in updated:
             file.write(line)
 
-def convert_to_lending_json(raw_data: str):
+def convert_to_lending_dict(raw_data: str):
     data = raw_data.strip().split(",")
     return {
         "book_id": data[0],
@@ -41,5 +40,5 @@ def convert_to_lending_json(raw_data: str):
         "return": data[3],
     }
 
-def convert_to_lending_str(json_data):
-    return f"{json_data['book_id']},{json_data['member_id']},{json_data['lent']},{json_data['return']}\n"
+def convert_to_lending_str(dict):
+    return f"{dict['book_id']},{dict['member_id']},{dict['lent']},{dict['return']}\n"

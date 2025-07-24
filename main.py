@@ -4,28 +4,27 @@ import member.controller as members_controller
 import lending.controller as lending_controller
 import services.lending_service as lending_service
 
-
-h.print_greeting()
-h.print_instructions()
-
+# List of allowed commands
 commands_list = {
-    "1": books_controller.add_book_controller,
+    "1": books_controller.handle_add_book,
     "2": members_controller.handle_sign_up,
     "3": lending_service.handle_lending,
     "4": lending_service.handle_returning,
-    "5": books_controller.display_member_list_controller,
+    "5": books_controller.handle_list_books,
     "6": members_controller.handle_list_members,
     "7": lending_controller.handle_list_lending,
+    "help": h.print_instructions,
 }
 
-running = True
-
 def main():
-    while running:
+    h.print_greeting()
+    h.print_instructions()
+
+    while True:
         command = input("Enter command: ")
 
         # This command will exit the application
-        if command == "x":
+        if command == "exit":
             h.print_exit_message()
             break
 
@@ -33,13 +32,9 @@ def main():
             commands_list[command]()
             print()
 
-        # This command will handle displaying the instructions of the application
-        elif command == "help":
-            h.print_instructions()
-
-        # This will ensure that no other commands are excepted
+        # This will ensure that no other commands are accepted
         else:
-            print("Invalid command.")
+            print("Invalid command.\n")
 
 
 if __name__ == "__main__":

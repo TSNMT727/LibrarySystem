@@ -1,39 +1,53 @@
-from tabulate import tabulate
 import member.model as m
 
+import utils.helpers as h
+from utils.constants import MAX_ATTEMPTS
+
+from tabulate import tabulate
+
+
+def handle_members_exist():
+    members = m.load_members()
+    if not members:
+        return False
+    return True
+
 def handle_sign_up():
-    while True:
-        
-        try:
-            print("Enter your student ID:")
-            new_user_id = int(input())
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-            continue
-        
-        if m.compare_new_member(new_user_id):
-            print("User is already a registered user!")
-        else:
-            print("Enter member's name: ")
-            name = input()
+    counter = 0
+    signing_up = True
 
-            print("Enter member's contact information (e.g., email address): ")
-            contact = input()
+    while signing_up:
+        while counter < MAX_ATTEMPTS:
+            # Get user input for member id
+            member_id = input("\nEnter member ID: ")
             
-            if m.save_member_to_file(new_user_id, name, contact, "1"):
-                print(f"{new_user_id} has been registered!")
+            # If member ID already exists, increment counter and prompt again
+            if m.compare_new_member(member_id):
+                print("Member ID already registered. Please enter a new ID.")
+                counter += 1
+                continue
 
-        # Ask user what to do next
-        print("\nWhat would you like to do next?")
-        print("1. Register another user")
-        print("2. Return to main menu")
-        choice = input("Enter your choice (1 or 2): ")
+            # If member ID is unique, get name and contact information and save the member
+            else:
+                name = input("Enter member name: ")
+                contact = input("Enter member contact (e.g. email address): ")
 
-        if choice == '2':
-            break
-        elif choice != '1':
-            print("Invalid option. Returning to main menu by default.")
-            break
+                if m.save_member_to_file(member_id, name, contact):
+                    print(f"{member_id} has been registered!")
+                    signing_up = False
+                    break
+        else:
+            if not h.handle_max_attempts():
+                break
+            counter = 0
+
+        to_continue = h.handle_continue()
+        if to_continue:
+            counter = 0
+            signing_up = True
+
+def handle_get_member(member_id: str):
+    return m.get_member(member_id)
 
 def handle_list_members():
     members = m.load_members()
@@ -48,7 +62,4 @@ def handle_list_members():
             rows.append(row)
 
         headers = [key.upper() for key in members[0].keys()]
-        print(tabulate(rows, headers, tablefmt="rounded_grid"))
-    
-def handle_get_member(member_id: str):
-    return m.get_member(member_id)
+        print("\n" + tabulate(rows, headers, tablefmt="rounded_grid"))
