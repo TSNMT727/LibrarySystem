@@ -32,14 +32,15 @@ def handle_sign_up():
                 name = input("Enter member name: ")
                 contact = input("Enter member contact (e.g. email address): ")
 
-                if m.save_member_to_file(member_id, name, contact):
-                    print(f"{member_id} has been registered!")
-                    signing_up = False
-                    break
+                m.save_member_to_file(member_id, name, contact)
+                print(f"{member_id} has been registered!")
+                signing_up = False
+                break
         else:
             if not h.handle_max_attempts():
                 break
             counter = 0
+            continue
 
         to_continue = h.handle_continue()
         if to_continue:
