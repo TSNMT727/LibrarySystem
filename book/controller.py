@@ -39,6 +39,7 @@ def handle_add_book():
             if not h.handle_max_attempts():
                 break
             counter = 0
+            continue
 
         to_continue = h.handle_continue()
         if to_continue:

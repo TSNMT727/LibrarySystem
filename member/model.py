@@ -36,10 +36,6 @@ def compare_new_member(member_id):
         
 
 def save_member_to_file(id, name, contact):
-    try:
-        with open(MEMBERS_FILE, "a") as file:
-            line = f"{id},{name},{contact}\n"
-            file.write(line)
-    except FileNotFoundError:
-        open(MEMBERS_FILE, "w").close()
-    return True
+    with open(MEMBERS_FILE, "a") as file:
+        line = f"{id},{name},{contact}\n"
+        file.write(line)
