@@ -5,11 +5,8 @@ from utils.constants import MAX_ATTEMPTS
 
 from tabulate import tabulate
 
-def handle_books_exist():
-    books = model.all_books()
-    if not books:
-        return False
-    return True
+def handle_get_books():
+    return model.all_books()
 
 def handle_add_book():
     counter = 0

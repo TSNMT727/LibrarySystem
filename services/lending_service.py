@@ -11,13 +11,13 @@ def handle_lending():
     lending = True
 
     # Check if there are available books to lend
-    available_books = [b for b in book_controller.handle_books_exist() if b['is_available']]
+    available_books = [b for b in book_controller.handle_get_books() if b['is_available']]
     if len(available_books) == 0:
         print("No available books to lend.")
         return
 
     # Check if there are registered members 
-    current_members = member_controller.handle_members_exist()
+    current_members = member_controller.handle_get_members()
     if not current_members:
         print("No members registered.")
         return

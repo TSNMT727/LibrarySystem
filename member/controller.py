@@ -6,11 +6,8 @@ from utils.constants import MAX_ATTEMPTS
 from tabulate import tabulate
 
 
-def handle_members_exist():
-    members = m.load_members()
-    if not members:
-        return False
-    return True
+def handle_get_members():
+    return m.load_members()
 
 def handle_sign_up():
     counter = 0
